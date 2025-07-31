@@ -95,6 +95,7 @@ export function Email({
                   id="name"
                   placeholder="email"
                   defaultValue={data}
+                  disabled
                   onInput={(e: any) => {
                     setIndexer(
                       indexer.map((data: string, index: number) =>
@@ -111,7 +112,14 @@ export function Email({
           <div className="grid w-full max-w-sm items-center gap-1.5">
             <Button
               onClick={() => {
-                handleSubmit({ name, dob, intrrest, Proffesion, workspace });
+                handleSubmit({
+                  name,
+                  dob,
+                  intrrest,
+                  Proffesion,
+                  workspace,
+                  email: session.data?.user.email,
+                });
               }}
               className="hover:bg-[rgb(0,119,212)] bg-[#2383e2] dark:text-white"
               disabled={indexer.length == 0}

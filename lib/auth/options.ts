@@ -1,12 +1,27 @@
-// import GoogleProvider from "next-auth/providers/google";
+// /app/api/auth/[...nextauth]/route.ts
+import CredentialsProvider from "next-auth/providers/credentials";
 import { type AuthOptions } from "next-auth";
 
 export const authOptions: AuthOptions = {
   providers: [
-    // GoogleProvider({
-    //   clientId: "process.env.GOOGLE_CLIENT_ID!",
-    //   clientSecret: "process.env.GOOGLE_CLIENT_SECRET!",
-    // }),
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "text" },
+      },
+      async authorize(credentials) {
+        const email = credentials?.email;
+
+        console.log(credentials, email, !email);
+        if (!email) return null; // ❌ Missing email
+
+        // ✅ Always allow sign-in with any email
+        return {
+          id: email,
+          email: email,
+        };
+      },
+    }),
   ],
   session: {
     strategy: "jwt",
@@ -16,7 +31,6 @@ export const authOptions: AuthOptions = {
   },
   pages: {
     signIn: "/auth",
-    signOut: "/signout",
   },
   callbacks: {
     async jwt({ token, user }) {

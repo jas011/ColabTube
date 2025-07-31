@@ -38,15 +38,34 @@ export function NavUser({
   };
 }) {
   const { isMobile } = useSidebar();
-  const [users, setUsers] = useState<string>(
-    user.image ?? "https://github.com/shadcn.png"
-  );
+
+  const [User, setUser] = useState<any>({
+    name: "",
+    email: user.email,
+    image: "https://github.com/shadcn.png",
+  });
+
+  useEffect(() => {
+    console.log(user);
+
+    const intrested = () => {
+      const user = localStorage.getItem("onboarding");
+
+      if (!user) {
+        return null;
+      }
+      const { name } = JSON.parse(user);
+      setUser({ ...User, name });
+    };
+    intrested();
+  }, []);
+
   useEffect(() => {
     window.addEventListener("local-storage-updated", () => {
       // When local storage changes, dump the list to
       // the console.
       const Avt = localStorage.getItem("Avatar");
-      if (Avt) setUsers(Avt);
+      if (Avt) setUser({ ...User, image: Avt });
     });
 
     const fileUrl = async () => {
@@ -56,7 +75,7 @@ export function NavUser({
       if (!fileRecord) return null;
 
       const blobUrl = URL.createObjectURL(fileRecord.blob);
-      setUsers(blobUrl);
+      setUser({ ...User, image: blobUrl });
     };
     void (async () => await fileUrl())();
   }, []);
@@ -71,12 +90,12 @@ export function NavUser({
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={users} alt={user.name} />
+                <AvatarImage src={User.image} alt={User.name} />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+                <span className="truncate font-semibold">{User.name}</span>
+                <span className="truncate text-xs">{User.email}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -90,12 +109,12 @@ export function NavUser({
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.image} alt={user.name} />
+                  <AvatarImage src={User.image} alt={User.name} />
                   <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">{user.name}</span>
-                  <span className="truncate text-xs">{user.email}</span>
+                  <span className="truncate font-semibold">{User.name}</span>
+                  <span className="truncate text-xs">{User.email}</span>
                 </div>
               </div>
             </DropdownMenuLabel>
@@ -126,6 +145,7 @@ export function NavUser({
               onClick={() => {
                 Files.clear();
                 localStorage.clear();
+                document.cookie = "onboarded=false;path=/";
                 signOut({ callbackUrl: "/auth" });
               }}
             >

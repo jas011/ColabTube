@@ -1,17 +1,10 @@
 "use client";
 
 import * as React from "react";
-import {
-  Frame,
-  LifeBuoy,
-  Map,
-  PieChart,
-  Send,
-  SquareTerminal,
-} from "lucide-react";
+import { LifeBuoy, Send, SquareTerminal } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
+
 import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
 import {
@@ -75,30 +68,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     navSecondary: [
       {
         title: "Support",
-        url: "#",
+        url: "https://github.com/jas011/ColabTube",
         icon: LifeBuoy,
       },
       {
         title: "Feedback",
-        url: "#",
+        url: "https://github.com/jas011/ColabTube/issues",
         icon: Send,
-      },
-    ],
-    projects: [
-      {
-        name: "Design Engineering",
-        url: "#",
-        icon: Frame,
-      },
-      {
-        name: "Sales & Marketing",
-        url: "#",
-        icon: PieChart,
-      },
-      {
-        name: "Travel",
-        url: "#",
-        icon: Map,
       },
     ],
   };
@@ -126,7 +102,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>

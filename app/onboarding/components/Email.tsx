@@ -79,7 +79,7 @@ export function Email({
               Start with your team
             </h4>
             <h4 className="scroll-m-20 text-center text-xl font-semibold tracking-tight text-[#555c5d]">
-              Cloudshare works best with you teammates
+              colabtube works best with you teammates
             </h4>
           </div>
 

@@ -166,7 +166,7 @@ function Card1() {
           </CardContent>
           <CardFooter className="items-center md:py-5 md:px-6 bg-[#fafafa] flex justify-between rounded-b-xl border-t flex-col md:flex-row gap-3 p-5">
             <p className="text-muted-foreground text-sm geist">
-              Used when interacting with the support.
+              Invite Your assets.
             </p>
             <Button
               onClick={() => {

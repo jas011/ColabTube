@@ -82,7 +82,7 @@ export function What({
         <section className="flex flex-col item-center gap-16">
           <div className="flex items-center flex-col text-center">
             <h4 className="scroll-m-20 text-[1.2rem] md:text-2xl font-semibold tracking-tight">
-              How do you want to use Cloudshare?
+              How do you want to use colabtube?
             </h4>
             <h4 className="scroll-m-20 text-xl font-semibold tracking-tight text-[#555c5d]">
               This helps coustomize your experience

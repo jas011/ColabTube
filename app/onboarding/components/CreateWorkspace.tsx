@@ -41,7 +41,7 @@ export function CreateWorkspace({
               Create a workspace
             </h4>
             <h4 className="scroll-m-20 text-center text-xl font-semibold tracking-tight text-[#555c5d]">
-              This is how Workspace apear on cloudshare
+              This is how Workspace apear on colabtube
             </h4>
           </div>
 

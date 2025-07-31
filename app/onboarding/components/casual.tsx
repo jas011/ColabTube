@@ -61,7 +61,7 @@ export function LoginForm({
               Create a profile
             </h4>
             <h4 className="scroll-m-20 text-center text-xl font-semibold tracking-tight text-[#555c5d]">
-              {"This is how you'll apear on cloudshare"}
+              {"This is how you'll apear on colabtube"}
             </h4>
           </div>
           <div className="flex flex-col items-center gap-1">

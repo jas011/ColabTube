@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext","es2015"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "downlevelIteration": true,
+    "target": "es2015",
+    "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"],
+      "@prisma-client-user": ["prisma/node_modules/.prisma/client-user/index.d.ts"],
+      "@prisma-client-storage": ["prisma/node_modules/.prisma/client-storage/index.d.ts"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/dashboard/card/App.js", "app/dashboard/main/index.Jsx", "app/oauth2callback/authenticate.tsx", "app/context/CredentialContext.jsx", "Consumer/server.js", "pages/api/kafka/kafkaInit.js", "app/file-space/components/uploads.jsx", "app/projects/Draw.jsx"],
+  "exclude": ["node_modules"]
+}
